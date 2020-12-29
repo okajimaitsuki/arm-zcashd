@@ -1,4 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env /bin/bash
+
+echo Installing clang to avoid downloading amd64 version clang...
+sudo apt install clang
 
 export LC_ALL=C
 set -eu -o pipefail
