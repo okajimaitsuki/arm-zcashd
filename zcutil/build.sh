@@ -1,5 +1,11 @@
 #!/usr/bin/env /bin/bash
 
+if [ ! $USER = root ]
+    then
+    echo "Please run this script as root."
+    exit
+fi
+
 echo "if this script finished with exec format error, Enter this command and try again."
 echo "   rm $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc"
 echo "   ln -s /usr/bin/rustc $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc"
@@ -12,12 +18,17 @@ if [ -e SetupProccessFinished ]
     else
     echo Installing clang to avoid downloading amd64 version clang...
     sudo apt install clang
-    echo True > SetupProccessFinished
-    sudo ln -s /usr/bin/g++ /usr/local/bin/aarch64-unknown-linux-gnu-g++
-    sudo ln -s /usr/bin/ar /usr/local/bin/aarch64-unknown-linux-gnu-ar
-    sudo ln -s /usr/bin/ranlib /usr/local/bin/aarch64-unknown-linux-gnu-ranlib
-    sudo ln -s /usr/bin/gcc /usr/local/bin/aarch64-unknown-linux-gnu-gcc
-    sudo ln -s /usr/bin/nm /usr/local/bin/aarch64-unknown-linux-gnu-nm
+    ln -s /usr/bin/g++ /usr/local/bin/aarch64-unknown-linux-gnu-g++
+    ln -s /usr/bin/ar /usr/local/bin/aarch64-unknown-linux-gnu-ar
+    ln -s /usr/bin/ranlib /usr/local/bin/aarch64-unknown-linux-gnu-ranlib
+    ln -s /usr/bin/gcc /usr/local/bin/aarch64-unknown-linux-gnu-gcc
+    ln -s /usr/bin/nm /usr/local/bin/aarch64-unknown-linux-gnu-nm
+    git clone --recursive git://github.com/boostorg/boost.git boostsource--depth=1
+    cd boostsource
+    ./bootstrap.sh
+    ./b2 install -j2 --prefix=$(pwd)/../Boost
+    echo '$PATH=$PATH:'$(pwd)/../ >> $HOME/.bashrc
+    touch ../SetupProccessFinished
 fi
 
 export LC_ALL=C
