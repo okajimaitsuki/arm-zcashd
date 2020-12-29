@@ -5,7 +5,7 @@ echo "   rm $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc"
 echo "   ln -x /usr/bin/rustc $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc"
 read -p "Press return to continue..."
 
-if [ ! -e SetupProccessFinished ]
+if [ -e SetupProccessFinished ]
     then
     echo "Noticed that this script is running for more than 2 times."
     echo "Skipping Setup Process..."
