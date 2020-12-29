@@ -6,6 +6,7 @@ sudo ln -s /usr/bin/g++ /usr/local/bin/aarch64-unknown-linux-gnu-g++
 sudo ln -s /usr/bin/ar /usr/local/bin/aarch64-unknown-linux-gnu-ar
 sudo ln -s /usr/bin/ranlib /usr/local/bin/aarch64-unknown-linux-gnu-ranlib
 sudo ln -s /usr/bin/gcc /usr/local/bin/aarch64-unknown-linux-gnu-gcc
+sudo ln -s /usr/bin/nm /usr/local/bin/aarch64-unknown-linux-gnu-nm
 
 export LC_ALL=C
 set -eu -o pipefail
