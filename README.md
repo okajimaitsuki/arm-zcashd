@@ -1,4 +1,4 @@
-Zcash 4.2.0 ARM Proccessing
+Zcash 4.2.0 ARM (Status: Testing)
 <img align="right" width="120" height="80" src="doc/imgs/logo.png">
 ===========
 
