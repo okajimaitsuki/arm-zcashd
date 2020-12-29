@@ -5,13 +5,19 @@ echo "   rm $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc
 echo "   ln -x /usr/bin/rustc $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc"
 read -p "Press return to continue..."
 
-echo Installing clang to avoid downloading amd64 version clang...
-sudo apt install clang
-sudo ln -s /usr/bin/g++ /usr/local/bin/aarch64-unknown-linux-gnu-g++
-sudo ln -s /usr/bin/ar /usr/local/bin/aarch64-unknown-linux-gnu-ar
-sudo ln -s /usr/bin/ranlib /usr/local/bin/aarch64-unknown-linux-gnu-ranlib
-sudo ln -s /usr/bin/gcc /usr/local/bin/aarch64-unknown-linux-gnu-gcc
-sudo ln -s /usr/bin/nm /usr/local/bin/aarch64-unknown-linux-gnu-nm
+if [ ! -d SetupProccessFinished ]
+    then
+    echo "Noticed that this script is running for more than 2 times."
+    echo "Skipping Setup Process..."
+    else
+    echo Installing clang to avoid downloading amd64 version clang...
+    sudo apt install clang
+    echo True > SetupProccessFinished
+    sudo ln -s /usr/bin/g++ /usr/local/bin/aarch64-unknown-linux-gnu-g++
+    sudo ln -s /usr/bin/ar /usr/local/bin/aarch64-unknown-linux-gnu-ar
+    sudo ln -s /usr/bin/ranlib /usr/local/bin/aarch64-unknown-linux-gnu-ranlib
+    sudo ln -s /usr/bin/gcc /usr/local/bin/aarch64-unknown-linux-gnu-gcc
+    sudo ln -s /usr/bin/nm /usr/local/bin/aarch64-unknown-linux-gnu-nm
 
 export LC_ALL=C
 set -eu -o pipefail
