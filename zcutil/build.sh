@@ -2,7 +2,7 @@
 
 echo "if this script finished with exec format error, Enter this command and try again."
 echo "   rm $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc"
-echo "   ln -x /usr/bin/rustc $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc"
+echo "   ln -s /usr/bin/rustc $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc"
 read -p "Press return to continue..."
 
 if [ -e SetupProccessFinished ]
