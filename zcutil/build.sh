@@ -1,5 +1,10 @@
 #!/usr/bin/env /bin/bash
 
+echo "if this script finished with exec format error, Enter this command and try again."
+echo "   rm $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc
+echo "   ln -x /usr/bin/rustc $(pwd)/depends/aarch64-unknown-linux-gnu/native/bin/rustc"
+read -p "Press return to continue..."
+
 echo Installing clang to avoid downloading amd64 version clang...
 sudo apt install clang
 sudo ln -s /usr/bin/g++ /usr/local/bin/aarch64-unknown-linux-gnu-g++
